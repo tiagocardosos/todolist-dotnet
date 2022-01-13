@@ -3,12 +3,11 @@
 Este projeto foi criado para fins didáticos.
 
 ## Features
-
--[] Documentar código
--[] Adicionar campos e pesquisa
--[] Comentar todos os códigos
--[] Adicionar o Migration em um Migration.Dockerfile
--[] Aplicar uma arquitura limpa na API
+- [] Documentar código
+- [] Adicionar campos e pesquisa
+- [] Comentar todos os códigos
+- [] Adicionar o Migration em um Migration.Dockerfile
+- [] Aplicar uma arquitura limpa na API
 
 ### Instalando packages
 
