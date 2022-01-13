@@ -61,6 +61,8 @@ dotnet publish --configuration Release --output dist
 dotnet TodoApiMinimal.dll
 ```
 
+## Comandos docker
+
 Testando a publicação para preparar e rodar no docker
 
 ### Teste dockerfile
@@ -70,7 +72,7 @@ docker build -t apitodo .
 docker run -d -p 5000:80 -p --name apitodo apitodo
 ```
 
-## Comandos docker
+### Usando o docker-compose
 
 ```
 docker-compose up -d --build
