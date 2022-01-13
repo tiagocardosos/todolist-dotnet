@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  db:
+    image: "mysql:5.7"
+    container_name: db
+    ports:
+      - "3309:3306"
+    restart: always
+    volumes:
+      - datadb:/var/lib/mysql
+    networks:
+      - mysqldotnet
+    environment:
+      - MYSQL_PASSWORD=zinco
+      - MYSQL_ROOT_PASSWORD=zinco
+      - MYSQL_ROOT_HOST=%
+      - bind-address:0.0.0.0
+  api:
+    build:
+      context: .
+      dockerfile: ./TodoApi/Dockerfile
+    container_name: api
+    restart: always
+    ports:
+      - 5000:80
+    networks:
+      - apidotnet
+      - mysqldotnet
+    depends_on:
+      - db
+    environment:
+      - DBHOST=db
+      - ASPNETCORE_ENVIRONMENT=development
+    links:
+      - "db:db"
+  front:
+    build: 
+      context: ./front/
+      dockerfile: Dockerfile
+    container_name: front
+    restart: always
+    ports:
+      - "4200:80"
+    networks:
+      - frontdotnet
+
+volumes:
+  datadb:
+    driver: local
+
+networks:
+  apidotnet:
+    driver: bridge
+  frontdotnet:
+    driver: bridge
+  mysqldotnet:
+    driver: bridge    
