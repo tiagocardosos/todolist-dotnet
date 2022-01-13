@@ -95,5 +95,6 @@ docker-compose up -d --build --build-arg ASPNETCORE_ENVIRONMENT=Development api
 ```
 
 Referências:
-https://balta.io/blog/docker-instalacao-configuracao-e-primeiros-passos
-https://balta.io/blog/wsl
+
+- https://balta.io/blog/docker-instalacao-configuracao-e-primeiros-passos
+- https://balta.io/blog/wsl
