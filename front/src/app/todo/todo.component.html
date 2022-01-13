@@ -1,0 +1,57 @@
+<div class="p-3 my-5 text-white-50 rounded shadow-sm">
+  <form #formTodo="ngForm">
+    <div class="d-flex align-items-center">
+      <div class="input-group mb-3">
+        <input class="form-control form-control-lg" type="text" name="title" minlength="5" required
+          placeholder="Sua tarefa" aria-label="Sua tarefa" #title="ngModel" [(ngModel)]="todo.title">
+        <button type="submit" class="btn btn-primary" id="todo_add" (click)="save()" [disabled]="!formTodo.form.valid">
+          <i class="bi bi-plus"></i> Novo
+        </button>
+      </div>
+    </div>
+    <div *ngIf="title.errors && (title.dirty || title.touched)" class="alert alert-danger">
+      <div [hidden]="!title.errors.required">
+        Digite a tarefa.
+      </div>
+      <div [hidden]="!title.errors.minlength">
+        A tarefa deve conter ao menos 5 caracteres.
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+  <h4 class="border-bottom border-gray pb-1 mb-0">{{ titlePage }}</h4>
+  <div class="flex-d" *ngFor="let todo of todos">
+    <div class="bd-callout" [ngClass]="[todo.done ? 'bd-callout-primary' : 'bd-callout-warning']">
+      <div class="row">
+        <div class="col-10">
+          <label (dblclick)="editTodo(todo, $event)">{{todo.title}}</label>
+          <input class="form-control edit" [value]="todo.title" [(ngModel)]="todo.title" [id]="todo.id"
+            (keypress)="updatingTitle(todo, $event)" (blur)="cancelEditTodo(todo)"
+            (keyup.enter)="saveTitle(todo, $event)" (keyup.escape)="cancelEditTodo(todo)" hidden>
+        </div>
+        <div class="col-2">
+          <div class=" d-flex justify-content-end">
+            <div class="btn-group !spacing" role="group" aria-label="Group">
+              <button type="button" class="btn btn-sm" [class]="todo.done ?'btn-outline-danger':'btn-outline-primary'"
+                [title]="todo.done ? 'Desfazer': 'Finalizar'" aria-label="Done" (click)="done(todo)">
+                <i class="bi" [class]="todo.done ? 'bi-arrow-counterclockwise' : 'bi-check-all'"></i>
+              </button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" title="Excluir" (click)="delete(todo)">
+                <i class="bi bi-x"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!todos || todos == ''" class="text-center p-3">
+    <h5>Não existem tarefas</h5>
+  </div>
+  <small class="d-block text-center mt-3">
+    <a href="#" class="btn btn-light" (click)="init()">Todos</a> |
+    <a href="#" class="btn btn-light" (click)="doneAll()">Finalizados</a>
+  </small>
+</div>
