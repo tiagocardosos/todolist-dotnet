@@ -2,7 +2,19 @@
 
 Este projeto foi criado para fins didáticos.
 
+## Acessos
+
+API -> http://localhost:5000/swagger/index.html
+
+Front -> http://localhost:4200/#
+
+Banco:
+User: root
+Pass: zinco
+IP: localhost
+
 ## Features
+
 - [ ] Documentar código
 - [ ] Adicionar campos e pesquisa
 - [ ] Comentar todos os códigos
@@ -73,6 +85,7 @@ docker-compose up -d --build --build-arg ASPNETCORE_ENVIRONMENT=Development api
 ```
 
 #### efetuando o build desconsiderando as dependências
+
 ```
 docker-compose up -d --no-deps --build api
 ```
