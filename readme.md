@@ -13,6 +13,12 @@ User: root
 Pass: zinco
 IP: localhost
 
+## Iniciando projeto
+
+```
+docker-compose up -d
+```
+
 ## Features
 
 - [ ] Documentar código
@@ -20,8 +26,12 @@ IP: localhost
 - [ ] Comentar todos os códigos
 - [ ] Adicionar o Migration em um Migration.Dockerfile
 - [ ] Aplicar uma arquitura limpa na API
+- [ ] Git Action para o front
+- [ ] Git Action para a API
 
-### Instalando packages
+## Comandos de console
+
+### Anotações durante o aprendizado
 
 ```
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
@@ -29,14 +39,12 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.Tools
 ```
 
-### Criando Database
+### Criando Database com EF
 
 ```
 dotnet ef migrations add CreateDatabase
 dotnet ef database update
 ```
-
-## Rodando no console
 
 ### Testando a aplicação
 
@@ -46,7 +54,7 @@ dotnet build
 dotnet run
 ```
 
-## Gerando release e executando no terminal
+### Gerando release e executando no terminal
 
 ```
 dotnet publish --configuration Release --output dist
@@ -62,30 +70,24 @@ docker build -t apitodo .
 docker run -d -p 5000:80 -p --name apitodo apitodo
 ```
 
-### Usando o docker-compose
+## Comandos docker
 
 ```
-docker-compose up -d
+docker-compose up -d --build
 ```
 
-ou
+ou argumentos
 
 ```
 docker-compose up -d --build-arg ASPNETCORE_ENVIRONMENT=Development
 ```
 
-### Usando o docker-compose para atualizar apenas um container
+### Atualizando apenas um container
 
 ```
-docker-compose up -d --no-deps --build api
+docker-compose up -d --no-deps --build api #ignorando dependências
 ```
 
 ```
 docker-compose up -d --build --build-arg ASPNETCORE_ENVIRONMENT=Development api
-```
-
-#### efetuando o build desconsiderando as dependências
-
-```
-docker-compose up -d --no-deps --build api
 ```
