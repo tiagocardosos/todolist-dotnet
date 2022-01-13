@@ -1,4 +1,4 @@
-# ToDoList feito em .NET 6 + Angular 13 + Mysql
+# ToDoList em .NET 6 + Angular 13 + Mysql
 
 Este projeto foi criado para fins didáticos.
 
@@ -64,9 +64,15 @@ docker-compose up -d --build-arg ASPNETCORE_ENVIRONMENT=Development
 
 ### Usando o docker-compose para atualizar apenas um container
 
+```
 docker-compose up -d --no-deps --build api
+```
+
+```
 docker-compose up -d --build --build-arg ASPNETCORE_ENVIRONMENT=Development api
+```
 
 #### efetuando o build desconsiderando as dependências
-
+```
 docker-compose up -d --no-deps --build api
+```
