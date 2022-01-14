@@ -25,13 +25,15 @@ docker-compose up -d
 - [ ] Adicionar campos e pesquisa
 - [ ] Comentar todos os códigos
 - [ ] Adicionar o Migration em um Migration.Dockerfile
-- [ ] Aplicar uma arquitura limpa na API
+- [ ] Aplicar uma arquitetura limpa na API
 - [ ] Git Action para o front
 - [ ] Git Action para a API
+- [ ] Melhores práticas Angular
+- [ ] Melhores práticas .NET
 
 ## Comandos de console
 
-### Anotações durante o aprendizado
+Os camando listados foram utilizados durante o aprendizado
 
 ```
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
